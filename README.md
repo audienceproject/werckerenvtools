@@ -20,10 +20,11 @@ Organization, application and pipeline must exist.
 
 Example:
 
-`werckerenvtools import [organization] [application] [pipeline] --token [token] --file ENVIRONMENT`
+`werckerenvtools import [organization] [application] [pipeline] --token [token] --overwrite true --file ENVIRONMENT`
 
-will import the environment variables of the updatpipeline from file called ENVIRONMENT
+will import the environment variables of the update pipeline from file called ENVIRONMENT
 Organization, application and pipeline must exist.
+`overwrite` is optional and defaults to `false` but will overwrite existing keys
 
 ## Sync
 
@@ -33,3 +34,4 @@ Example:
 
 will sync the environment variables of the src pipeline to the dst pipeline
 Organization, application and pipelines must exist.
+`overwrite` is optional and defaults to `false` but will overwrite existing keys
