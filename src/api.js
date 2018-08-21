@@ -16,6 +16,18 @@ exports.WerckerApi = class {
 
     return await request(options).promise();
   }
+  async getOrganization(organization) {
+    var options = {
+      method: "GET",
+      url: `https://app.wercker.com/api/v2/organizations/${organization}`,
+      headers: {
+        Authorization: `Bearer ${this.token}`
+      },
+      json: true
+    };
+
+    return await request(options).promise();
+  }
   async getApp(organization, app) {
     var options = {
       method: "GET",
@@ -49,6 +61,12 @@ exports.WerckerApi = class {
   async getEnvironmentVariablesForApplicationId(appId) {
     return this._getEnvironmentVariablesForScopeWithId("application", appId);
   }
+  async getEnvironmentVariablesForOrganizationId(organizationId) {
+    return this._getEnvironmentVariablesForScopeWithId(
+      "organization",
+      organizationId
+    );
+  }
   async getEnvironmentVariablesForPipelineId(pipelineId) {
     return this._getEnvironmentVariablesForScopeWithId("pipeline", pipelineId);
   }
@@ -81,6 +99,17 @@ exports.WerckerApi = class {
         key: key,
         value: value,
         protected: isProtected
+      },
+      json: true
+    };
+    await request(options).promise();
+  }
+  async deleteEnvironmentVariable(id) {
+    var options = {
+      method: "DELETE",
+      url: `https://app.wercker.com/api/v3/envvars/${id}`,
+      headers: {
+        Authorization: `Bearer ${this.token}`
       },
       json: true
     };

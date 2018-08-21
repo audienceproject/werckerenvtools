@@ -39,3 +39,11 @@ Example:
 will sync the environment variables of the src pipeline to the dst pipeline
 Organization, application and pipelines must exist.
 `overwrite` is optional and defaults to `false` but will overwrite existing keys
+
+## Trim
+
+Example:
+
+`werckerenvtools trim [organization] [application] [pipeline] --token [token]`
+
+Trims all environment variable keys in the pipeline that also exists in application or organization
