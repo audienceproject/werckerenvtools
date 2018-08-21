@@ -50,6 +50,8 @@ function parseContents(contents) {
   return contents
     .trim()
     .split("\n")
+    .map(l => l.trim())
+    .filter(l => l != "")
     .map(l => {
       const [k, v] = l
         .trim()
