@@ -2,6 +2,10 @@
 
 Tools to work with wercker environments
 
+## Installation
+
+`npm i -g @apr/werckerenvtools`
+
 ## Export
 
 Example:
@@ -18,7 +22,7 @@ Example:
 
 `werckerenvtools import [organization] [application] [pipeline] --token [token] --file ENVIRONMENT`
 
-will import the environment variables of the pipeline from file called ENVIRONMENT
+will import the environment variables of the updatpipeline from file called ENVIRONMENT
 Organization, application and pipeline must exist.
 
 ## Sync
