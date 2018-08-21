@@ -22,11 +22,14 @@ exports.handler = async function(argv) {
     argv.app,
     argv.pipeline
   );
+  const app = await api.getApp(argv.organization, argv.app);
+  const appEnvvars = await api.getEnvironmentVariablesForApplicationId(app.id);
   const dstEnvvars = await api.getEnvironmentVariablesForPipelineId(dst.id);
-  const dstKeys = new Set(dstEnvvars.map(e => e.key));
+  const existingKeys = new Set(dstEnvvars.concat(appEnvvars).map(e => e.key));
+
   if (argv.overwrite) {
     await Promise.all(
-      srcEnvvars.filter(e => dstKeys.has(e.key)).map(async e => {
+      srcEnvvars.filter(e => existingKeys.has(e.key)).map(async e => {
         const id = dstEnvvars.find(e2 => e2.key === e.key).id;
         await api.updateEnvironmentVariable(id, e.key, e.value, e.protected);
         console.log(`Updated env key ${e.key} with: ${e.value}`);
@@ -34,7 +37,7 @@ exports.handler = async function(argv) {
     );
   }
   await Promise.all(
-    srcEnvvars.filter(e => !dstKeys.has(e.key)).map(async e => {
+    srcEnvvars.filter(e => !existingKeys.has(e.key)).map(async e => {
       await api.postEnvironmentVariableToPipeline(
         dst.id,
         e.key,
