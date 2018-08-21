@@ -6,6 +6,10 @@ Tools to work with wercker environments
 
 `npm i -g @apr/werckerenvtools`
 
+## Env variables
+
+To avoid writing the api token directly in the command line, it can be read from the environment variable `WERCKERENVTOOLS_TOKEN`.
+
 ## Export
 
 Example:
