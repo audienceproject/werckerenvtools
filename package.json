@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Tools to work with environment variables in wercker",
   "main": "cli.js",
-  "scripts": {
-    "test": "npm run test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/audienceproject/werckerenvtools.git"
