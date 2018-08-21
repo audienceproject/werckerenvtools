@@ -1,6 +1,6 @@
 {
   "name": "@apr/werckerenvtools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tools to work with environment variables in wercker",
   "main": "cli.js",
   "repository": {
