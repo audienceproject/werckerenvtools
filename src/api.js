@@ -56,7 +56,7 @@ exports.WerckerApi = class {
     };
 
     var body = await request(options).promise();
-    return body.results;
+    return body.results || [];
   }
   async getEnvironmentVariablesForApplicationId(appId) {
     return this._getEnvironmentVariablesForScopeWithId("application", appId);

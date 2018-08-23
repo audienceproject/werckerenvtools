@@ -1,6 +1,7 @@
 const WerckerApi = require("../api").WerckerApi;
 exports.command = "trim [organization] [app] [pipeline]";
-exports.desc = "Trim pipeline for variables existing in application";
+exports.desc =
+  "Trim pipeline for variables existing in application or organization";
 exports.builder = {
   token: {
     required: true
