@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/audienceproject/werckerenvtools.git"
   },
+  "engines": {
+    "node": ">=8.10.0"
+  },
   "keywords": [
     "wercker",
     "environment",
